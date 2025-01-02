@@ -1,5 +1,6 @@
 # E-Commerce-App
 ## Introduction ##
+Simple Front-End Design using bootstrap
 
 ## Screenshots ##
 ![ss2](SS/ss2.png)
