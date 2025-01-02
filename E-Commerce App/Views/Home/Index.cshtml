@@ -1,0 +1,306 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+}
+<div class="container">
+
+    <div class="d-flex mx-3">
+        @{
+            var images = new List<string>
+            {
+            "~/images/promotion - 1.png",
+            "~/images/promotion - 2.png",
+            "~/images/promotion - 3.jpg"
+            };
+        }
+
+        <div id="carousel" class="carousel slide w-100" data-bs-ride="carousel">
+
+            <!-- Indicators -->
+            <div class="carousel-indicators">
+                @for (int i = 0; i < images.Count; i++)
+                {
+                    <button type="button" data-bs-target="#carousel" data-bs-slide-to="@i" class="@(i == 0 ? "active" : "")" aria-current="@(i == 0 ? "true" : "false")" aria-label="Slide @(i + 1)"></button>
+                }
+            </div>
+
+            <!-- Slides -->
+            <div class="carousel-inner">
+                @for (int i = 0; i < images.Count; i++)
+                {
+                    <div class="carousel-item @(i == 0 ? "active" : "")">
+                        <img src="@Url.Content(images[i])" class="d-block w-100 img-fluid" alt="Slide @(i + 1)">
+                    </div>
+                }
+            </div>
+
+            <!-- Controls -->
+            <button class="carousel-control-prev" type="button" data-bs-target="#carousel" data-bs-slide="prev">
+                <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Previous</span>
+            </button>
+            <button class="carousel-control-next" type="button" data-bs-target="#carousel" data-bs-slide="next">
+                <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                <span class="visually-hidden">Next</span>
+            </button>
+        </div>
+
+    </div>
+
+    <div class="my-3">
+        <div class="mx-3"><h6>Flash Sale</h6></div>
+        <div class="container-fluid">
+            <div class="row">
+
+                @{
+
+                    var FSproducts = new List<Item>();
+
+                    for (var i = 0; i < 9; i++)
+                    {
+                        FSproducts.Add(new Item
+                        {
+                            Img = "~/images/steel shed fabrication.png",
+                            Description = "Hot Sale Steel Shed Fabrication Design Building Prefabricated Workshop Steel Structure Warehouse",
+                            Price = "$39.00-89.00",
+                            Pieces = "200",
+                            Flag = "~/images/cn.png",
+                            Country = "CN",
+                            Location = "Shenyang Lanying Colored Steel Co., Ltd.",
+                            Rate = "5.0",
+                            RateNumber = "9",
+                            Comment = "comment"
+                        });
+                    }
+                }
+
+                @foreach (var item in FSproducts)
+                {
+
+                    <div class="col-lg-3 col-md-4 col-6 px-2 py-1">
+                        <div class="d-flex bg-white m-1 p-2 border-none rounded-3 flex-column">
+                            <div class="align-content-center justify-content-center">
+                                <img alt="" src="@Url.Content(@item.Img)" class="card-img" />
+                            </div>
+                            <div class="py-1"><span class="truncate-text">@item.Description</span></div>
+                            <div class="py-1"><b>@item.Price</b><span class="small text-muted">/piece</span></div>
+                            <div class="py-1">@item.Pieces pieces <span class="small text-muted">Min. order</span></div>
+                            <div class="py-2">
+
+                                <div class="d-flex flex-nowrap">
+                                    <div class="align-content-center pb-1">
+                                        <img alt="flag" src="@Url.Content(@item.Flag)" class="img-fluid" width="30">
+                                    </div>
+
+                                    <span class="small mx-1 align-content-center">@item.Country</span>
+
+                                    <div class="text-truncate ms-1 align-content-center" style="overflow: hidden; white-space: nowrap;">
+                                        <span>@item.Location</span>
+                                    </div>
+                                </div>
+
+                                <div class="d-flex flex-row align-content-center">
+                                    <span class="d-flex align-content-center text-primary rounded-3 px-1" style="background-color: rgba(0, 123, 255, 0.1);">
+                                        <span class="small me-1">@item.Rate</span>
+                                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" class="pt-1" fill="currentColor">@("<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->")<path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg>
+
+                                    </span>
+
+                                    <div class="small text-muted ms-1">
+                                        (<span>@item.RateNumber</span>)
+                                    </div>
+
+                                    <div class="hstack mx-2">
+                                        <span class="border-start border-1 h-50"></span>
+                                    </div>
+
+                                    <div class="small text-muted">"<span>@item.Comment</span>"</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                }
+
+            </div>
+        </div>
+
+        <div class="my-3">
+            <div class="mx-3"><h6>Just For You</h6></div>
+            <div class="container-fluid">
+                <div class="row">
+
+                    @{
+
+                        var JFYproducts = new List<Item>();
+
+                        for (var i = 0; i < 9; i++)
+                        {
+                            JFYproducts.Add(new Item
+                            {
+                                Img = "~/images/world plug.jpg",
+                                Description = "Worldplug Newest Technology Electrical Plug Socket World Plug Travel Charger Adapter With Worldwide And USA/JP AC Socket",
+                                Price = "$12.49-13.78",
+                                Pieces = "300",
+                                Flag = "~/images/cn.png",
+                                Country = "CN",
+                                Location = "Dongguan Best Travel Electronics Co., Ltd.",
+                                Rate = "5.0",
+                                RateNumber = "9",
+                                Comment = "comment"
+                            });
+                        }
+                    }
+
+                        @foreach (var item in JFYproducts)
+                        {
+
+                        <div class="col-lg-3 col-md-4 col-6 px-2 py-1">
+                                <div class="d-flex bg-white m-1 p-2 border-none rounded-3 flex-column">
+                                    <div class="align-content-center justify-content-center">
+                                        <img alt="" src="@Url.Content(@item.Img)" class="card-img" />
+                                    </div>
+                                    <div class="py-1"><span class="truncate-text">@item.Description</span></div>
+                                    <div class="py-1"><b>@item.Price</b><span class="small text-muted">/piece</span></div>
+                                    <div class="py-1">@item.Pieces pieces <span class="small text-muted">Min. order</span></div>
+                                    <div class="py-2">
+
+                                        <div class="d-flex flex-nowrap">
+                                            <div class="align-content-center pb-1">
+                                                <img alt="flag" src="@Url.Content(@item.Flag)" class="img-fluid" width="30">
+                                            </div>
+
+                                            <span class="small mx-1 align-content-center">@item.Country</span>
+
+                                            <div class="text-truncate ms-1 align-content-center" style="overflow: hidden; white-space: nowrap;">
+                                                <span>@item.Location</span>
+                                            </div>
+                                        </div>
+
+                                        <div class="d-flex flex-row align-content-center">
+                                            <span class="d-flex align-content-center text-primary rounded-3 px-1" style="background-color: rgba(0, 123, 255, 0.1);">
+                                                <span class="small me-1">@item.Rate</span>
+                                                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="16" height="16" class="pt-1" fill="currentColor">@("<!--!Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2024 Fonticons, Inc.-->")<path d="M316.9 18C311.6 7 300.4 0 288.1 0s-23.4 7-28.8 18L195 150.3 51.4 171.5c-12 1.8-22 10.2-25.7 21.7s-.7 24.2 7.9 32.7L137.8 329 113.2 474.7c-2 12 3 24.2 12.9 31.3s23 8 33.8 2.3l128.3-68.5 128.3 68.5c10.8 5.7 23.9 4.9 33.8-2.3s14.9-19.3 12.9-31.3L438.5 329 542.7 225.9c8.6-8.5 11.7-21.2 7.9-32.7s-13.7-19.9-25.7-21.7L381.2 150.3 316.9 18z" /></svg>
+
+                                            </span>
+
+                                            <div class="small text-muted ms-1">
+                                                (<span>@item.RateNumber</span>)
+                                            </div>
+
+                                            <div class="hstack mx-2">
+                                                <span class="border-start border-1 h-50"></span>
+                                            </div>
+
+                                            <div class="small text-muted">"<span>@item.Comment</span>"</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        }
+
+                    </div>
+        </div>
+    </div>
+    </div>
+</div>
+
+<div class="container-fluid bg-white border-top">
+    <div class="container pt-4 mt-1">
+
+    <div class="d-flex justify-content-between flex-wrap">
+        <div class="">
+                <div class="d-flex flex-column">
+                    <div class="d-flex py-3"><b>Get support</b></div>
+                    <div class="d-flex flex-column remove-text-decoration">
+                        <div class="d-flex pb-3">
+                            <a href="#">Help Center</a>
+                        </div> 
+                        <div class="d-flex pb-3">
+                            <a href="#">Live chat</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">Check order status</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">Refunds</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">Report abuse</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="">
+                <div class="d-flex flex-column">
+                    <div class="d-flex py-3"><b>Trade Assurance</b></div>
+                    <div class="d-flex flex-column remove-text-decoration">
+                        <div class="d-flex pb-3">
+                            <a href="#">Safe and easy payments</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">Money-back policy</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">On-time shipping</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">After-sales protections</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">Product monitoring services</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+        <div class="">
+                <div class="d-flex flex-column remove-text-decoration">
+                    <div class="d-flex py-3"><b>Get to know us</b></div>
+                    <div class="d-flex flex-column">
+                        <div class="d-flex pb-3">
+                            <a href="#">About</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">Corporate responsibility</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">News center</a>
+                        </div>
+                        <div class="d-flex pb-3">
+                            <a href="#">Careers</a>
+                        </div>
+                    </div>
+                </div>
+        </div>
+    </div>
+    
+</div>
+    
+    <div class="container pb-5 pt-5">
+        <div class="d-flex flex-row">
+            
+            <a href="#" class="me-4">
+                <img src="~/images/icon-fb.png" alt="facebook" class="img-fluid me-1" width="29"/>
+            </a>
+
+            <a href="#" class="me-4">
+                <img src="~/images/icon-in.png" alt="facebook" class="img-fluid me-1" width="29" />
+            </a>
+
+            <a href="#" class="me-4">
+                <img src="~/images/icon-tt.png" alt="facebook" class="img-fluid me-1" width="29" />
+            </a>
+
+            <a href="#" class="me-4">
+                <img src="~/images/icon-it.png" alt="facebook" class="img-fluid me-1" width="29" />
+            </a>
+
+            <a href="#" class="me-4">
+                <img src="~/images/icon-yt.png" alt="facebook" class="img-fluid me-1" width="29" />
+            </a>
+
+            <a href="#" class="me-4">
+                <img src="~/images/icon-tt.png" alt="facebook" class="img-fluid me-1" width="29" />
+            </a>
+
+        </div>
+    </div>
+</div>

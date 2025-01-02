@@ -1,0 +1,117 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - E_Commerce_App</title>
+    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/E_Commerce_App.styles.css" asp-append-version="true" />
+
+</head>
+<body onload="setSelectWidth()" style="background:#f4f4f4;">
+
+    <header class="navbar bg-white p-0 fixed-top">
+        <nav class="container-fluid navbar-fixed-top m-0 p-0 small">
+                <div class="container-fluid m-0 p-0">
+                    <div class="bg-white">
+
+                        <div class="container-fluid m-2">
+
+                            <div class="d-flex flex-md-row flex-column">
+                
+                                <div class="align-content-center">
+                                    <a class="navbar-brand" asp-area="" asp-controller="Home" asp-action="Index">E-Commerce App</a>
+                                </div>
+
+                                <div class="flex-grow-1 mx-lg-5 mx-md-2 align-content-center">
+                                    <form action="Search" class="d-flex border rounded-pill overflow-hidden" style="border-color:lightgray;">
+
+                                        <div class="d-flex align-content-center">
+                                            <select id="template" style="display:none;">
+                                                <option id="templateOption"></option>
+                                            </select>
+
+                                            <select id="sel" onChange="setSelectWidth();" class="border-0 justify-content-start px-2 py-1" style="outline: none;">
+                                                <option>All</option>
+                                                <option>Filter 1</option>
+                                                <option>Filter 234</option>
+                                            </select>
+
+                                         </div>
+
+                                        <input type="search" class="flex-grow-1 border-0" style="outline: none;"/>
+
+                                            <button type="submit" class="border-0 px-3 py-1">
+                                                <ion-icon name="search" class="d-flex align-content-center align-content-center"></ion-icon>
+                                            </button>
+
+                                    </form>
+                                </div>
+
+                                <div class="align-content-center">
+                                    <div class="d-flex justify-content-md-between justify-content-evenly align-content-center">
+                    
+                                        <a class="d-flex align-items-center nav-link py-1 px-3 nav-link text-dark" href="#"><ion-icon name="enter-outline" class="mx-1"></ion-icon>Sign in</a>
+                                        <span class="vr h-25 my-2"></span>
+                                        <a class="d-flex align-items-center nav-link py-1 px-3 nav-link text-dark" href="#"><ion-icon name="person-add-outline" class="mx-1"></ion-icon>Sign up</a>
+                           
+                                    </div>
+                                </div>
+
+                            </div>
+                
+                        </div>
+
+                    </div>
+
+                    <div class="bg-white border-bottom box-shadow pb-1">
+                        <div class="container-fluid">
+                            <div class="row">
+                                <div class="col-md-2 col-4">
+                            
+                                    <div class="d-flex justify-content-md-start mx-md-2 justify-content-center">
+                                        <a href="#" class="d-flex align-items-center nav-link m-0 p-0 nav-link text-dark">
+                                            <ion-icon name="list-outline" class="mx-1"></ion-icon>
+                                            <div class="d-flex flex-nowrap py-1">All&nbsp;Categories</div>
+                                        </a>
+                                    </div>
+                            
+                                </div>
+                                <div class="col-md-8 col-4"></div>
+                                <div class="col-md-2 col-4">
+
+                                <div class="d-flex justify-content-md-end mx-md-2 justify-content-center py-1">
+                                        <a href="#" class="d-flex align-items-center nav-link m-0 p-0 nav-link text-dark"><span>Get the app</span></a>
+                                    </div>
+                            
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </nav>
+        
+    </header>
+
+    <div class="container-fluid m-0 p-0">
+        <main role="main" class="pt-md-0 mt-md-0 pt-1 mt-1">
+            <div class="m-md-4 p-md-4 m-4 p-5"></div>
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="footer text-muted mt-3">
+        <div class="container">
+            &copy; 2024 - E_Commerce_App - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+</body>
+</html>
